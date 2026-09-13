@@ -13,11 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TATTOO — Discover Your Next Tattoo",
+  title: "Marked Studio — Discover Your Next Tattoo",
   description:
     "A modern social community and marketplace centered around tattoos. Find the tattoo that tells your story, share ideas, and discover inspiration.",
   keywords: [
     "tattoos",
+    "marked studio",
     "tattoo ideas",
     "tattoo inspiration",
     "fine line tattoo",
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     "tattoo community",
     "tattoo flash",
   ],
-  authors: [{ name: "TATTOO Platform" }],
+  authors: [{ name: "Marked Studio" }],
   openGraph: {
-    title: "TATTOO — Discover Your Next Tattoo",
+    title: "Marked Studio — Discover Your Next Tattoo",
     description:
       "Find the tattoo that tells your story. Discover tattoo ideas, connect with people, and find the right inspiration for your next piece.",
     type: "website",

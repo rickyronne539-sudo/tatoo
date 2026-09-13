@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Globe, ArrowUp } from "lucide-react";
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -47,10 +48,25 @@ export function Footer() {
           <div className="space-y-3">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-2xl font-black tracking-[0.25em] text-white uppercase hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-3.5 group hover:opacity-95 transition-opacity"
             >
-              <span>TATTOO</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white opacity-80" />
+              <div className="relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/10 p-1.5 group-hover:border-white/25 transition-all">
+                <Image
+                  src="/marked-studio-emblem.png"
+                  alt="Marked Studio Emblem"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-black tracking-[0.22em] text-white uppercase leading-none">
+                  MARKED
+                </span>
+                <span className="text-[10px] tracking-[0.35em] text-zinc-400 uppercase font-mono mt-1 leading-none">
+                  STUDIO • ART & IDENTITY
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-zinc-400 max-w-sm">
               Discover your next tattoo. A modern social community connecting
@@ -112,7 +128,7 @@ export function Footer() {
           </nav>
 
           <p className="text-zinc-500">
-            © {new Date().getFullYear()} TATTOO. Discover your next tattoo.
+            © {new Date().getFullYear()} Marked Studio. Discover your next tattoo.
           </p>
         </div>
       </div>

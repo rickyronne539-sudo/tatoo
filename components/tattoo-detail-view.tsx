@@ -309,7 +309,7 @@ export function TattooDetailView({
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
               Connect with @{tattoo.author.username} or share your spin on this
-              concept with the Tattoo community.
+              concept with the Marked Studio community.
             </p>
             <button
               type="button"

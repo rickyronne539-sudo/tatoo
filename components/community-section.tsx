@@ -74,7 +74,7 @@ export function CommunitySection() {
             {joined ? (
               <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-center gap-2.5 text-emerald-300 text-sm font-medium animate-in fade-in zoom-in duration-200">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                <span>Welcome to Tattoo! Your early invitation is reserved.</span>
+                <span>Welcome to Marked Studio! Your early invitation is reserved.</span>
               </div>
             ) : (
               <form
@@ -91,9 +91,9 @@ export function CommunitySection() {
                 />
                 <button
                   type="submit"
-                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all active:scale-95 shadow-md shadow-white/10"
+                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all active:scale-95 shadow-md shadow-white/10 cursor-pointer"
                 >
-                  <span>Join Tattoo</span>
+                  <span>Join Marked Studio</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>

@@ -253,7 +253,7 @@ export default function AdminPage() {
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-[11px] uppercase tracking-widest font-mono text-zinc-400 bg-white/[0.06] px-2.5 py-1 rounded-full border border-white/[0.08]">
-                  Studio Management
+                  Marked Studio • Management
                 </span>
                 <span className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-500/30">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />

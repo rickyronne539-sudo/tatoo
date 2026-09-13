@@ -28,18 +28,18 @@ export async function generateMetadata({
 
   if (!tattoo) {
     return {
-      title: "Tattoo Not Found — TATTOO",
-      description: "The requested tattoo piece could not be found on TATTOO.",
+      title: "Tattoo Not Found — Marked Studio",
+      description: "The requested tattoo piece could not be found on Marked Studio.",
     };
   }
 
   return {
-    title: `${tattoo.title} — ${tattoo.style} Tattoo | TATTOO`,
+    title: `${tattoo.title} — ${tattoo.style} Tattoo | Marked Studio`,
     description:
       tattoo.description ||
       `Discover ${tattoo.title} in ${tattoo.style} on ${tattoo.placement} by @${tattoo.author.username}.`,
     openGraph: {
-      title: `${tattoo.title} | TATTOO`,
+      title: `${tattoo.title} | Marked Studio`,
       description:
         tattoo.description ||
         `Explore this ${tattoo.style} tattoo on ${tattoo.placement}.`,

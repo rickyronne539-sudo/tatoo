@@ -62,10 +62,26 @@ export function Navbar({ onSearchClick }: NavbarProps) {
           <div className="flex items-center gap-8">
             <Link
               href="/"
-              className="group flex items-center gap-2 text-xl sm:text-2xl font-black tracking-[0.25em] text-white hover:opacity-90 transition-opacity uppercase"
+              className="group flex items-center gap-3 hover:opacity-95 transition-opacity"
             >
-              <span>TATTOO</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white opacity-80 group-hover:scale-125 transition-transform" />
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/10 p-1 group-hover:border-white/30 transition-all">
+                <Image
+                  src="/marked-studio-emblem.png"
+                  alt="Marked Studio Emblem"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base sm:text-lg font-black tracking-[0.22em] text-white uppercase leading-tight">
+                  MARKED
+                </span>
+                <span className="text-[9px] tracking-[0.35em] text-zinc-400 uppercase font-mono leading-tight">
+                  STUDIO
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}

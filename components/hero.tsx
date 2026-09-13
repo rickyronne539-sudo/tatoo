@@ -35,9 +35,9 @@ export function Hero() {
           {/* Left Column: Typography & CTAs */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6 md:space-y-8">
             {/* Tag badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs uppercase tracking-[0.2em] text-zinc-300 font-medium">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs uppercase tracking-[0.2em] text-zinc-300 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Social Tattoo Marketplace
+              <span>Marked Studio • Tattoo & Art Identity</span>
             </div>
 
             {/* Main Headline */}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { X, Sparkles, ShieldCheck, ArrowRight, UserCheck, Loader2, AlertCircle } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { CATEGORIES } from "@/lib/sample-tattoos";
@@ -123,13 +124,22 @@ export function AuthModal() {
         </button>
 
         {/* Modal Header */}
-        <div className="text-center space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-zinc-300 mb-2">
+        <div className="text-center space-y-1.5">
+          <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white/[0.04] border border-white/10 p-2 flex items-center justify-center shadow-lg shadow-black/50">
+            <Image
+              src="/marked-studio-emblem.png"
+              alt="Marked Studio Emblem"
+              width={40}
+              height={40}
+              className="w-full h-full object-contain filter drop-shadow-[0_0_6px_rgba(255,255,255,0.25)]"
+            />
+          </div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-zinc-300 mb-1">
             <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
-            <span>Tattoo Community Auth</span>
+            <span>Marked Studio Access</span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white">
-            {mode === "register" ? "Join TATTOO" : "Welcome Back"}
+            {mode === "register" ? "Join Marked Studio" : "Welcome Back"}
           </h2>
           <p className="text-xs text-zinc-400">
             {mode === "register"
