@@ -2,11 +2,59 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { X, Sparkles, ShieldCheck, ArrowRight, UserCheck, Loader2, AlertCircle } from "lucide-react";
+function CloseModalIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
+function SparklesIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  );
+}
+
+function UserCheckIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7zM19 11l2 2 4-4" />
+    </svg>
+  );
+}
+
+function LoaderIcon({ className = "w-4 h-4 animate-spin" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+    </svg>
+  );
+}
+
+function AlertCircleIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </svg>
+  );
+}
 import { useAuth } from "@/lib/auth-context";
 import { CATEGORIES } from "@/lib/sample-tattoos";
 
-function GoogleLogo({ className = "w-4 h-4" }: { className?: string }) {
+export function GoogleLogo({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24">
       <path
@@ -120,7 +168,7 @@ export function AuthModal() {
           aria-label="Close modal"
           className="absolute top-5 right-5 p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
         >
-          <X className="w-5 h-5" />
+          <CloseModalIcon className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
@@ -135,7 +183,7 @@ export function AuthModal() {
             />
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-zinc-300 mb-1">
-            <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
+            <SparklesIcon className="w-3.5 h-3.5 text-zinc-300" />
             <span>Marked Studio Access</span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white">
@@ -158,7 +206,7 @@ export function AuthModal() {
           >
             {isGoogleLoading ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-zinc-400" />
+                <LoaderIcon className="w-4 h-4 animate-spin text-zinc-400" />
                 <span>Signing in with Google...</span>
               </>
             ) : (
@@ -179,7 +227,7 @@ export function AuthModal() {
         {/* Error notification banner */}
         {authError && (
           <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+            <AlertCircleIcon className="w-4 h-4 shrink-0 text-rose-400" />
             <span>{authError}</span>
           </div>
         )}
@@ -314,7 +362,7 @@ export function AuthModal() {
             className="w-full py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-zinc-200 active:scale-98 transition-all shadow-md shadow-white/10 flex items-center justify-center gap-2 mt-2"
           >
             <span>{mode === "register" ? "Create Free Account" : "Sign In"}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRightIcon className="w-4 h-4" />
           </button>
         </form>
 
@@ -325,7 +373,7 @@ export function AuthModal() {
             onClick={handleDemoLogin}
             className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white underline underline-offset-4 transition-colors"
           >
-            <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <UserCheckIcon className="w-3.5 h-3.5 text-emerald-400" />
             <span>Instant Demo Sign-in (@kai_collector)</span>
           </button>
         </div>

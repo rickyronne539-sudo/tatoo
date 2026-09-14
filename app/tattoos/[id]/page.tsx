@@ -69,7 +69,7 @@ export default async function TattooDetailPage({ params }: PageProps) {
     <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-1 pt-28 pb-20 md:pt-36 md:pb-28">
+      <main id="main-content" className="flex-1 pt-28 pb-20 md:pt-36 md:pb-28">
         <TattooDetailView tattoo={tattoo} relatedTattoos={relatedTattoos} />
       </main>
 

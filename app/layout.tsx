@@ -5,17 +5,21 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
 });
 
 export const metadata: Metadata = {
-  title: "Marked Studio — Discover Your Next Tattoo",
+  title: "Marked Studio — Tattoos & Removal Consultations",
   description:
-    "A modern social community and marketplace centered around tattoos. Find the tattoo that tells your story, share ideas, and discover inspiration.",
+    "Explore tattoos, tattoo removal, cover-ups, and touch-ups. Request a consultation with Los Angeles as our initial service area.",
   keywords: [
     "tattoos",
     "marked studio",
@@ -23,14 +27,15 @@ export const metadata: Metadata = {
     "tattoo inspiration",
     "fine line tattoo",
     "realism tattoo",
-    "tattoo community",
+    "tattoo removal consultation",
+    "Los Angeles",
     "tattoo flash",
   ],
   authors: [{ name: "Marked Studio" }],
   openGraph: {
-    title: "Marked Studio — Discover Your Next Tattoo",
+    title: "Marked Studio — Tattoos & Removal Consultations",
     description:
-      "Find the tattoo that tells your story. Discover tattoo ideas, connect with people, and find the right inspiration for your next piece.",
+      "New ink or a fresh start. Explore tattoo and removal services, then request a consultation in a few simple steps.",
     type: "website",
   },
 };
@@ -44,8 +49,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#09090b] text-[#fafafa] font-sans antialiased selection:bg-white selection:text-black flex flex-col`}
       >
         <AuthProvider>
@@ -56,4 +62,3 @@ export default function RootLayout({
     </html>
   );
 }
-

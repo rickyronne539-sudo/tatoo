@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book a Tattoo Appointment | Marked Studio",
+  title: "Request a Consultation | Marked Studio",
   description:
-    "Schedule your next tattoo session or design consultation. Choose placement, style, date, and time with leading tattoo creators.",
+    "Request a tattoo, removal, cover-up, or touch-up consultation in our initial Los Angeles service area. No account or upfront payment needed.",
 };
 
 export default function BookLayout({

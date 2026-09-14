@@ -89,7 +89,7 @@ export default function ExploreTattoosPage() {
     <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-1 pt-28 pb-20 md:pt-36 md:pb-28">
+      <main id="main-content" className="flex-1 pt-28 pb-20 md:pt-36 md:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb navigation */}
           <nav className="flex items-center gap-2 text-xs text-zinc-500 mb-6">

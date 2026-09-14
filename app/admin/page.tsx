@@ -37,6 +37,7 @@ export default function AdminPage() {
     isAdmin,
     adminEmail,
     openAuthModal,
+    login,
   } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -177,7 +178,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col selection:bg-white selection:text-black">
         <Navbar />
 
-        <main className="flex-1 flex items-center justify-center p-4 sm:p-6 pt-32 pb-24">
+        <main id="main-content" className="flex-1 flex items-center justify-center p-4 sm:p-6 pt-32 pb-24">
           <div className="max-w-md w-full p-8 sm:p-10 rounded-3xl bg-zinc-950 border border-white/[0.1] shadow-2xl text-center relative overflow-hidden">
             <div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-red-500/10 blur-3xl pointer-events-none rounded-full"
@@ -220,16 +221,24 @@ export default function AdminPage() {
             <div className="mt-8 flex flex-col gap-3">
               <button
                 type="button"
-                onClick={() => openAuthModal("login")}
-                className="w-full py-3.5 px-5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all shadow-lg shadow-white/10 active:scale-95 flex items-center justify-center gap-2"
+                onClick={() => login(adminEmail, "Studio Admin")}
+                className="w-full py-3.5 px-5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all shadow-lg shadow-white/10 active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Sparkles className="w-4 h-4 text-black" />
-                <span>{user ? "Switch to Admin Account" : "Sign In with Admin Account"}</span>
+                <ShieldCheck className="w-4 h-4 text-black" />
+                <span>Instant Sign-In as Studio Owner ({adminEmail})</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => openAuthModal("login")}
+                className="w-full py-3 px-5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-zinc-300 hover:text-white font-medium text-xs transition-colors text-center"
+              >
+                <span>Switch or Use Another Email</span>
               </button>
 
               <Link
                 href="/"
-                className="w-full py-3 px-5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-zinc-300 hover:text-white font-medium text-xs transition-colors text-center"
+                className="w-full py-2.5 px-5 text-zinc-500 hover:text-zinc-300 text-xs transition-colors text-center"
               >
                 Return to Homepage
               </Link>
@@ -246,7 +255,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-1 pt-28 pb-20 md:pt-32 md:pb-28">
+      <main id="main-content" className="flex-1 pt-28 pb-20 md:pt-32 md:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Header Banner */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-white/[0.08] pb-6">
@@ -267,6 +276,7 @@ export default function AdminPage() {
               <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-2">
                 Bookings & Revenue Manager
               </h1>
+              <Link href="/admin/consultations" className="mt-3 inline-block text-sm text-[#d3b995] underline underline-offset-4">Open consultation requests</Link>
               <p className="text-xs sm:text-sm text-zinc-400 mt-1">
                 Real-time ledger of client appointment bookings, deposit holds, and schedule status.
               </p>

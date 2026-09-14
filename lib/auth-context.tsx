@@ -76,6 +76,7 @@ interface AuthContextType {
     id: string,
     status: AdminBooking["status"]
   ) => void;
+  refreshBookings: () => Promise<void>;
   isAuthModalOpen: boolean;
   authModalMode: "login" | "register";
   openAuthModal: (mode?: "login" | "register") => void;
@@ -99,6 +100,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [allBookings, setAllBookings] = useState<AdminBooking[]>([]);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalMode, setAuthModalMode] = useState<"login" | "register">("register");
+
+  const fetchBookingsFromServer = async () => {
+    try {
+      const res = await fetch("/api/bookings");
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data?.success && Array.isArray(data.bookings)) {
+        setAllBookings((prev) => {
+          const map = new Map<string, AdminBooking>();
+          [...data.bookings, ...prev].forEach((b: AdminBooking) => {
+            if (b && b.ref && !map.has(b.ref)) {
+              map.set(b.ref, b);
+            }
+          });
+          const merged = Array.from(map.values());
+          try {
+            localStorage.setItem(GLOBAL_BOOKINGS_KEY, JSON.stringify(merged));
+          } catch (e) {}
+          return merged;
+        });
+      }
+    } catch (e) {
+      console.warn("Could not fetch bookings from server API", e);
+    }
+  };
 
   // Load user and clean dynamic bookings from localStorage and Firestore on mount
   useEffect(() => {
@@ -182,6 +208,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.warn("Firestore snapshot listener error:", err);
       }
     }
+
+    // Always fetch latest bookings from centralized server API
+    fetchBookingsFromServer();
   }, []);
 
   const saveUser = (u: UserProfile | null) => {
@@ -299,6 +328,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return updated;
     });
 
+    // Write to central server API so all devices see the booking
+    fetch("/api/bookings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newEntry),
+    }).catch((err) => {
+      console.warn("Server booking record fallback:", err);
+    });
+
     // Write to Firestore in background
     const firestoreDb = getClientDb();
     if (firestoreDb) {
@@ -322,6 +360,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error(e);
       }
       return updated;
+    });
+
+    // Update on server API
+    fetch("/api/bookings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status }),
+    }).catch((err) => {
+      console.warn("Server status update fallback:", err);
     });
 
     const firestoreDb = getClientDb();
@@ -357,6 +404,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         allBookings,
         recordAdminBooking,
         updateBookingStatus,
+        refreshBookings: fetchBookingsFromServer,
         isAuthModalOpen,
         authModalMode,
         openAuthModal,
